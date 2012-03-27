@@ -1,0 +1,21 @@
+{
+    "name": "Trsteel/html-form-validation-bundle",
+    "type": "symfony-bundle",
+    "description": "Easily disable HTML5 validation errors.",
+    "keywords": ["HTML5", "Validation", "W3C"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Trent Steel",
+            "email": "trsteel88@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "symfony/framework-bundle": "2.*",
+    },
+    "autoload": {
+        "psr-0": { "Trsteel\\HtmlFormValidationBundle": "" }
+    },
+    "target-dir": "Trsteel/HtmlFormValidationBundle"
+}
