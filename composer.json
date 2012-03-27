@@ -1,5 +1,5 @@
 {
-    "name": "trsteel/html-form-validation-bundle",
+    "name": "Trsteel/html-form-validation-bundle",
     "type": "symfony-bundle",
     "description": "Easily disable HTML5 validation errors.",
     "keywords": ["HTML5", "Validation", "W3C"],
