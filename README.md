@@ -24,7 +24,20 @@ $loader->registerNamespaces(array(
 ));
 ```
 
-Add the bundle to the application kernal.
+Add the bundle to the application kernel.
+
+``` php
+<?php
+// app/AppKernel.php
+    public function registerBundles()
+    {
+        if (in_array($this->getEnvironment(), array('dev', 'test'))) {
+            // ...
+            $bundles[] = new Trsteel\HtmlFormValidationBundle\TrsteelHtmlFormValidationBundle();
+            // ...
+        }
+    }
+```
 
 ```php
 <?php
@@ -38,12 +51,4 @@ public function registerBundles()
         // ...
     );
 }
-```
-
-Enable the bundle.
-
-```yaml
-# app/config/config_dev.yml
-trsteel_html_form_validation:
-    enabled: true
 ```
