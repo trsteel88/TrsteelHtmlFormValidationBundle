@@ -39,16 +39,3 @@ Add the bundle to the application kernel.
     }
 ```
 
-```php
-<?php
-// app/AppKernel.php
-
-public function registerBundles()
-{
-    return array(
-        // ...
-        new Trsteel\HtmlFormValidationBundle\TrsteelHtmlFormValidationBundle(),
-        // ...
-    );
-}
-```
