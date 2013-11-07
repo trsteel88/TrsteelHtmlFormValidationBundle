@@ -25,7 +25,7 @@ class DisableHtmlFormValidation
             }
 
             $response = $event->getResponse();
-            $request  = $event->getRequest();
+            $request = $event->getRequest();
 
             if ($request->isXmlHttpRequest() || 'html' !== $request->getRequestFormat() || $response->isRedirect()) {
                 return;
@@ -33,7 +33,6 @@ class DisableHtmlFormValidation
 
             $content = $response->getContent();
 
-            $content = preg_replace('/novalidate="(.*)"/is', null, $content);
             $content = preg_replace('/<form/is', '<form novalidate="novalidate"', $content);
 
             $response->setContent($content);
