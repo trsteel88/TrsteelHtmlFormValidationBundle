@@ -4,6 +4,7 @@ namespace Trsteel\HtmlFormValidationBundle\Listener;
 
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
 use Symfony\Component\HttpKernel\Event\FilterResponseEvent;
 
@@ -27,7 +28,7 @@ class DisableHtmlFormValidation
             $response = $event->getResponse();
             $request = $event->getRequest();
 
-            if ($request->isXmlHttpRequest() || 'html' !== $request->getRequestFormat() || $response->isRedirect()) {
+            if ($request->isXmlHttpRequest() || 'html' !== $request->getRequestFormat() || $response->isRedirect() || $response instanceof StreamedResponse) {
                 return;
             }
 
