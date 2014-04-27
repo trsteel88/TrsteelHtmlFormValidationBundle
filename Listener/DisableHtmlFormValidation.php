@@ -28,7 +28,12 @@ class DisableHtmlFormValidation
             $response = $event->getResponse();
             $request = $event->getRequest();
 
-            if ($request->isXmlHttpRequest() || 'html' !== $request->getRequestFormat() || $response->isRedirect() || $response instanceof StreamedResponse) {
+            // Ignore requests for non-HTML pages, redirections, or streamed responses
+            if ('html' !== $request->getRequestFormat() || $response->isRedirect() || $response instanceof StreamedResponse) {
+                return;
+            }
+            // Ignore ajax requests only if the data returned is not HTML
+            if ($request->isXmlHttpRequest() && 'html' !== $request->getRequestFormat()) {
                 return;
             }
 
