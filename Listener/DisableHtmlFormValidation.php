@@ -28,15 +28,19 @@ class DisableHtmlFormValidation
             $response = $event->getResponse();
             $request = $event->getRequest();
 
-            if ($request->isXmlHttpRequest() || 'html' !== $request->getRequestFormat() || $response->isRedirect() || $response instanceof StreamedResponse) {
+            if ($request->isXmlHttpRequest() || 'html' !== $request->getRequestFormat() || $response->isRedirect()) {
                 return;
             }
 
-            $content = $response->getContent();
+            try {
+                $content = $response->getContent();
 
-            $content = preg_replace('/<form/is', '<form novalidate="novalidate"', $content);
+                $content = preg_replace('/<form/is', '<form novalidate="novalidate"', $content);
 
-            $response->setContent($content);
+                $response->setContent($content);
+            } catch (\Exception $e) {
+                
+            }
         }
     }
 }
