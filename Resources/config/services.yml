@@ -4,6 +4,6 @@ parameters:
 services:
     trsteel_html_form_validation:
         class: Trsteel\HtmlFormValidationBundle\Listener\DisableHtmlFormValidation
-        arguments: [%trsteel_html_form_validation.enabled%]
+        arguments: ["%trsteel_html_form_validation.enabled%"]
         tags:
             - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse, priority: -127 }
