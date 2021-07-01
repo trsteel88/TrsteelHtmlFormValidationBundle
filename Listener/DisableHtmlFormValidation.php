@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 use Symfony\Component\HttpKernel\HttpKernelInterface;
-use Symfony\Component\HttpKernel\Event\ResponseEvent;
+use Symfony\Component\HttpKernel\Event\KernelEvent;
 
 class DisableHtmlFormValidation
 {
@@ -17,7 +17,7 @@ class DisableHtmlFormValidation
         $this->enabled = $enabled;
     }
 
-    public function onKernelResponse(ResponseEvent $event)
+    public function onKernelResponse(KernelEvent $event)
     {
         if ($this->enabled) {
             if (HttpKernelInterface::MASTER_REQUEST !== $event->getRequestType()) {
