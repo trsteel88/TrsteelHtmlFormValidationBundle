@@ -15,7 +15,7 @@ class Configuration implements ConfigurationInterface
     /**
      * {@inheritDoc}
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
         $treeBuilder = new TreeBuilder('trsteel_html_form_validation');
         $rootNode = method_exists(TreeBuilder::class, 'getRootNode')
